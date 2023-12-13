@@ -9,5 +9,5 @@ module.exports = () => {
       stocks: `${(Math.random() * 10 + 15 - (i / 100) * 15).toFixed(3)}`
     });
   }
-  return data;
+  res.json(data.stocks);
 };
