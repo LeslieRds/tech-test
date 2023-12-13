@@ -1,6 +1,7 @@
 import express from "express";
 import nunjucks from "nunjucks";
 import path from "path";
+import stockRoutes from './app/routes';
 
 const app = express();
 
@@ -10,6 +11,8 @@ nunjucks.configure(path.join(__dirname, "./front"), {
   autoescape: true,
   express: app
 });
+
+app.use('/api', stockRoutes);
 
 app.use(
   express.static(path.join(__dirname, "/.public"), { maxAge: 31536000000 })

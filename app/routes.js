@@ -1,10 +1,14 @@
+import express from 'express';
+import generateStockData from '../api';
+
 const express = require("express");
 
 module.exports = () => {
   const app = new express.Router();
 
-  app.get("/", function(req, res) {
-    res.render("index");
+  app.get("/stocks", function(req, res) {
+    const data = generateStockData();
+    res.json(data);
   });
 
   app.post("/api/update", function(req, res) {
