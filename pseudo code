@@ -3,7 +3,7 @@
   // Les données de l'API sont stockées dans une variable
   // Les données de l'API sont affichées dans le tableau et le graphique
 
-    // les données sont stockées dans le JSON
+    // les données sont stockées dans le JSON // parser l'API
       // variables : index / stocks / timestamps ()
     // sont affichées dans le tableau
     // sont affichées dans le graphique
