@@ -1,4 +1,3 @@
-import express from 'express';
 import generateStockData from '../api';
 
 const express = require("express");
