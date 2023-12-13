@@ -1,0 +1,20 @@
+// Le site doit afficher un tableau et un graphique avec les données de l'API
+  // Les données de l'API sont récupérées au chargement de la page
+  // Les données de l'API sont stockées dans une variable
+  // Les données de l'API sont affichées dans le tableau et le graphique
+
+    // les données sont stockées dans le JSON
+      // variables : index / stocks / timestamps ()
+    // sont affichées dans le tableau
+    // sont affichées dans le graphique
+
+
+// User stories :
+
+// L'utilisateur peut :
+  // voir l'affichage du tableau de données et le graphique
+  // cliquer sur une des cellules du tableau
+    // modifier le contenu de la cellule (éditer le contenu)
+  // cela rafraîchit le graphique avec les nouvelles données
+// si les données de l'API ne sont pas disponibles
+  // afficher un message d'erreur "Le service est momentanément indisponible"

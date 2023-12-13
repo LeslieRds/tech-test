@@ -1,14 +1,92 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Suivi des indicateurs</title>
-<link rel="stylesheet" href="base/index.css">
+  <title>Page d'accueil</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+  </style>
 </head>
 <body>
+  <h1>Page d'accueil</h1>
 
-<h1>This is <span>a</span> Heading</h1>
-<p>This is a paragraph.</p>
+  <h2>Tableau</h2>
+  <table id="tableau">
+    <thead>
+      <tr>
+        <th>Colonne 1</th>
+        <th>Colonne 2</th>
+        <th>Colonne 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Les données du tableau seront générées dynamiquement à partir du JSON -->
+    </tbody>
+  </table>
 
-<script type="text/javascript" src="base/index.js"></script>
+  <h2>Graphique</h2>
+  <canvas id="graphique"></canvas>
+
+  <script>
+    // Récupérer les données JSON
+    const jsonData = [
+      { "colonne1": "Valeur 1", "colonne2": 10, "colonne3": 20 },
+      { "colonne1": "Valeur 2", "colonne2": 15, "colonne3": 25 },
+      { "colonne1": "Valeur 3", "colonne2": 20, "colonne3": 30 }
+    ];
+
+    // Générer le tableau à partir du JSON
+    const tableau = document.getElementById("tableau");
+    const tbody = tableau.getElementsByTagName("tbody")[0];
+    jsonData.forEach(data => {
+      const row = document.createElement("tr");
+      row.innerHTML = `<td>${data.colonne1}</td><td>${data.colonne2}</td><td>${data.colonne3}</td>`;
+      tbody.appendChild(row);
+    });
+
+    // Générer le graphique à partir du JSON
+    const graphiqueData = {
+      labels: jsonData.map(data => data.colonne1),
+      datasets: [
+        {
+          label: "Colonne 2",
+          data: jsonData.map(data => data.colonne2),
+          backgroundColor: "rgba(255, 99, 132, 0.2)",
+          borderColor: "rgba(255, 99, 132, 1)",
+          borderWidth: 1
+        },
+        {
+          label: "Colonne 3",
+          data: jsonData.map(data => data.colonne3),
+          backgroundColor: "rgba(54, 162, 235, 0.2)",
+          borderColor: "rgba(54, 162, 235, 1)",
+          borderWidth: 1
+        }
+      ]
+    };
+
+    const graphique = document.getElementById("graphique").getContext("2d");
+    new Chart(graphique, {
+      type: "bar",
+      data: graphiqueData,
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
 </body>
 </html>
